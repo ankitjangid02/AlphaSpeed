@@ -1,0 +1,56 @@
+#include<iostream>
+#include<cstring>
+#include<vector>
+#include<cstdlib>
+#include<ctime>
+
+using namespace std;
+
+string randomword(){
+    vector<string> a={"cat", "dog", "house", "tree", "car", "book", "apple", "banana", "sun", "moon", "rain", "bird", "fish", "computer", "phone", "water", "chair", "table", "school","city", "park", "food", "sand", "mountain", "river", "cloud", "road", "flower", "star", "night", "day", "light", "dark", "air", "wind", "rainbow", "clouds", "sky", "snow", "bird", "tiger", "elephant", "lion", "tree", "green", "yellow", "blue", "red", "purple", "orange", "brown", "white", "black", "grey", "pink", "cloud", "mountain", "forest", "beach", "desert", "island", "sea", "lake", "grass", "earth", "space", "universe", "planet", "star", "sunshine", "butterfly", "honey", "peace", "love", "kindness", "joy", "happiness", "smile", "laugh", "cry", "help", "friend", "family", "mom", "dad", "brother", "sister", "uncle", "aunt", "grandmother", "grandfather", "child", "baby", "man", "woman", "girl", "boy", "teacher", "student", "doctor", "nurse", "engineer", "artist", "worker", "soldier", "scientist", "chef", "driver", "pilot", "fireman", "policeman", "musician", "writer", "actor", "dancer", "guitar", "piano", "drums", "violin", "keyboard", "shoes", "shirt", "pants", "jacket", "hat", "glove", "scarf", "socks", "shorts", "dress", "coat", "suit", "tie", "sweater","sunglasses", "backpack", "wallet", "bag", "book", "pen", "notebook", "phone", "tablet", "laptop", "computer", "keyboard", "mouse", "headphones", "earphones", "charger", "television", "radio", "camera", "watch", "clock", "window", "door", "wall", "floor", "roof", "ceiling", "light", "lamp", "fan", "airconditioner", "refrigerator", "oven", "microwave", "stove", "toaster", "coffee", "tea", "juice", "water", "milk", "bread", "butter", "cheese", "chocolate", "cake", "cookie", "icecream", "fruit", "vegetable", "meat", "chicken", "fish", "rice", "pasta", "salad", "soup", "sandwich", "pizza", "hamburger", "hotdog", "frenchfries", "popcorn", "chips", "cake", "pie", "brownie"};
+    int l=a.size();
+    int q=rand()%l;
+    return a[q];
+}
+
+void typingtest(){
+    int s=0;
+    time_t ST, CT;
+    char Inp[1000];
+    string r;
+   
+    ST=time(0);
+    while(true){
+        r=randomword();
+        cout<<r<<"=";
+        cin.getline(Inp,1000);
+        for(int i=0;Inp[i]!='\0' && r[i]!='\0';i++){
+            if(Inp[i]==r[i]){
+                s++;
+            }
+        }
+        CT=time(0);
+        if(difftime(CT,ST)>=60){
+            break;
+        }
+        }
+    double t=60;
+    double wpm=(double(s)/5)/t*60;
+    cout<<"\n\nRESULTS:---------------|\nCorrect words:"<<s<<"\nTyping Speed(Words per minute):"<<wpm;
+}
+
+int main(){
+    cout<<"-----------------------------------------------------------------\n";
+    cout<<"                     **WELCOME TO**\n";
+    cout<<"                       AlphaSpeed  \n";
+    cout<<"-----------------------------------------------------------------\n";
+    cout<<"\nHow to use - Instructions:\n";
+    cout<<"1. You have 60 seconds.\n";
+    cout<<"2. Press 'ENTER' after completion of every word.\n";
+    cout<<"3. Your score will be calculated based on you correct words.\n";
+    cout<<"4. Your timer starts when you start typing.";
+    cout<<"-----------------------------------------------------------------\n";
+    cout<<"\nWORDS:\n\n";
+    srand(time(0));
+    typingtest();
+}
